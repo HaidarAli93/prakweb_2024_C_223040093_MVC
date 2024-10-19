@@ -31,7 +31,6 @@ class Mahasiswa_model {
 		$this->db->bind('jurusan', $data['jurusan']);
 
 		$this->db->execute();
-		echo $this->db->execute();
 
 		return $this->db->rowCount();
 	}
