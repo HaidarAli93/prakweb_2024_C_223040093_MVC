@@ -1,56 +1,23 @@
 <?php
 
 class Mahasiswa_model {
-/*
-	private $mhs = array(
-		array(
-			"nama" => "Haidar Ali",
-			"nrp" => "223040093",
-			"email" => "haidar.223040093@mail.unpas.ac.id",
-			"jurusan" => "Teknik Informatika"
-		),
-		array(
-			"nama" => "Bla Bla Bla",
-			"nrp" => "123456789",
-			"email" => "blablabla.123456789@mail.unpas.ac.id",
-			"jurusan" => "Entah",
-		)
-	);
-*/
-	private $dbh, $stmt;
+	private $table = 'Mahasiswa';
+	private $db;
 
 	public function __construct() {
-		$this->initDB();
-		$dsn = 'mysql:host=localhost;dbname=phpmvc';
+		$this->db = new Database;
+	}
 
-		try {
-			if (php_uname('s') == 'Linux') {
-					$this->dbh = new PDO($dsn, "ocak", "");
-			} else if (php_uname('s') == 'Windows NT') {
-					$this->dbh = new PDO($dsn, "root", "");
-			}
-		} catch(PDOException $e) {
-			die($e->getMessage());
-		}
+	public function getMahasiswaById($id) {
+		$this->db->query('SELECT * FROM ' . $this->table . ' WHERE id=:id');
+		$this->db->bind('id', $id);
+		return $this->db->single();
 	}
 
 	public function getAllMahasiswa() {
-		$this->stmt = $this->dbh->prepare('SELECT * FROM Mahasiswa');
-		$this->stmt->execute();
-		return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+		$this->db->query('SELECT * FROM ' . $this->table);
+		return $this->db->resultSet();
 	}
-
-	private function initDB() {
-        $command;
-
-        if (php_uname('s') == 'Linux') {
-            $command = "mariadb -h 'localhost' -u 'ocak' -p'' < '/home/peano/nb/akdmk/kbm/smt5/pw/prakweb_2024_C_223040093_MVC/app/models/initDB.sql'";
-        } else if (php_uname('s') == 'Windows NT') {
-            $command = "mysql -h localhost -u 'root' -p < \"D:\akdmk\kbm\smt5\pw\prakweb_2024_C_223040093_MVC\app\models\initDB.sql\"";
-        }
-		
-        shell_exec($command);
-    }
 }
 
 ?>

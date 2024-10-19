@@ -4,11 +4,14 @@
 			<h3>Daftar Mahasiswa<h3>
 			<ul>
 				<?php foreach ($data['mhs'] as $mhs ) { ?>
-					<ul class="mt-3">
-						<li><?= $mhs['nama'] ?></li>
-						<li><?= $mhs['nrp'] ?></li>
-						<li><?= $mhs['email'] ?></li>
-						<li><?= $mhs['jurusan'] ?></li>
+					<ul class="list-group mt-3">
+						<li class="list-group-item d-flex justify-content-between align-items-center">
+							<?= $mhs['nama'] ?>
+							<a href="<?= BASEURL; ?>/Mahasiswa/detail/<?= $mhs['id'] ?>" class="badge text-bg-primary">detail</a>
+						</li>
+						<li class="list-group-item"><?= $mhs['nrp'] ?></li>
+						<li class="list-group-item"><?= $mhs['email'] ?></li>
+						<li class="list-group-item"><?= $mhs['jurusan'] ?></li>
 					</ul>
 				<?php } ?>
 			</ul>
