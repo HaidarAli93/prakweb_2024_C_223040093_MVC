@@ -2,6 +2,11 @@ $(function() {
 
 	$('.tombolTambahData').on('click', function() {
 		$('#judulModal').html('Tambah Data Mahasiswa');
+                $('#nama').val('');
+                $('#nrp').val('');
+                $('#email').val('');
+                $('#jurusan').val('');
+                $('#id').val('');
 		$('.modal-footer button[type=submit]').html('Tambah Data');
 	});
 

@@ -75,14 +75,14 @@ class Database {
 
 	private function initDB() {
         $command;
-
+        
         if (php_uname('s') == 'Linux') {
-            $command = "mariadb -h '" . $this->host . "' -u '" . $this->user . "' -p'" . $this->pass . "' < '/home/peano/nb/akdmk/kbm/smt5/pw/prakweb_2024_C_223040093_MVC/app/models/initDB.sql'";
+            $command = "mariadb -h '" . $this->host . "' -u '" . $this->user . "' --password='" . $this->pass . "' < '/home/peano/nb/akdmk/kbm/smt5/pw/prakweb_2024_C_223040093_MVC/app/models/initDB.sql'";
         } else if (php_uname('s') == 'Windows NT') {
-            $command = "mysql -h " . $this->host . " -u '" . $this->user . "' -p < \"D:\akdmk\kbm\smt5\pw\prakweb_2024_C_223040093_MVC\app\models\initDB.sql\"";
+            $command = "mysql -h " . $this->host . " -u \"" . $this->user . "\" --password=\"" . $this->pass . "\" < \"D:\\akdmk\\kbm\\smt5\\pw\\prakweb_2024_C_223040093_MVC\\app\\models\\initDB.sql\"";
         }
-		
-        shell_exec($command);
+	
+		shell_exec($command);
     }
 }
 
