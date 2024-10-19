@@ -14,9 +14,10 @@
 			<ul>
 				<?php foreach ($data['mhs'] as $mhs ) { ?>
 					<ul class="list-group mt-3">
-						<li class="list-group-item d-flex justify-content-between align-items-center">
+						<li class="list-group-item">
 							<?= $mhs['nama'] ?>
-							<a href="<?= BASEURL; ?>/Mahasiswa/detail/<?= $mhs['id'] ?>" class="badge text-bg-primary">detail</a>
+							<a href="<?= BASEURL; ?>/Mahasiswa/hapus/<?= $mhs['id'] ?>" class="badge text-bg-danger float-end me-1" onclick="return confirm('Yakin?')">hapus</a>
+							<a href="<?= BASEURL; ?>/Mahasiswa/detail/<?= $mhs['id'] ?>" class="badge text-bg-primary float-end me-1">detail</a>
 						</li>
 					</ul>
 				<?php } ?>
