@@ -6,7 +6,7 @@
 	</div>
 	<div class="row">
 		<div class="col-6">
-			<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#formModal">
+			<button type="button" class="btn btn-primary tombolTambahData" data-bs-toggle="modal" data-bs-target="#formModal">
 				Tambah Data Mahasiswa
 			</button>
 			<br /><br />
@@ -17,6 +17,7 @@
 						<li class="list-group-item">
 							<?= $mhs['nama'] ?>
 							<a href="<?= BASEURL; ?>/Mahasiswa/hapus/<?= $mhs['id'] ?>" class="badge text-bg-danger float-end me-1" onclick="return confirm('Yakin?')">hapus</a>
+							<a href="<?= BASEURL; ?>/Mahasiswa/ubah/<?= $mhs['id'] ?>" class="badge text-bg-success float-end me-1 tampilModalUbah" data-bs-toggle="modal" data-bs-target="#formModal" data-id="<?= $mhs['id']; ?>">ubah</a>
 							<a href="<?= BASEURL; ?>/Mahasiswa/detail/<?= $mhs['id'] ?>" class="badge text-bg-primary float-end me-1">detail</a>
 						</li>
 					</ul>
@@ -36,6 +37,7 @@
       </div>
       <div class="modal-body">
 	  <form action="<?= BASEURL; ?>/Mahasiswa/tambah" method="post">
+		<input type="hidden" name="id" id="id" />
 		<div class="mb-3">
 		  <label for="nama" class="form-label">Nama</label>
 		  <input type="text" class="form-control" id="nama" name="nama">
